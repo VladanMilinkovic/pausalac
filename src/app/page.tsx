@@ -1,65 +1,209 @@
-import Image from "next/image";
+import Link from "next/link";
+import { ThemeToggle } from "@/components/theme-toggle";
+
+const plans = [
+  { name: "Netflix", amount: "$14.99", cadence: "Monthly", status: "Active" },
+  { name: "Figma", amount: "$12.00", cadence: "Monthly", status: "Active" },
+  { name: "ChatGPT", amount: "$20.00", cadence: "Monthly", status: "Renews soon" },
+];
 
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
+    <main
+      style={{
+        flex: 1,
+        display: "flex",
+        justifyContent: "center",
+        padding: "var(--space-xxl) var(--space-lg)",
+      }}
+    >
+      <section
+        style={{
+          width: "100%",
+          maxWidth: "58rem",
+          display: "grid",
+          gap: "var(--space-xl)",
+        }}
+      >
+        <header
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+            gap: "var(--space-md)",
+          }}
+        >
+          <div>
+            <p
+              style={{
+                margin: 0,
+                color: "var(--color-text-muted)",
+                fontSize: "var(--font-size-sm)",
+              }}
             >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
+              Subscription Tracker
+            </p>
+            <h1
+              style={{
+                margin: "var(--space-xs) 0 0",
+                color: "var(--color-text-primary)",
+                fontSize: "var(--font-size-xl)",
+                lineHeight: "var(--line-height-tight)",
+              }}
             >
-              Learning
-            </a>{" "}
-            center.
+              Portfolio Overview
+            </h1>
+          </div>
+          <ThemeToggle />
+        </header>
+
+        <article
+          style={{
+            borderRadius: "var(--radius-lg)",
+            backgroundColor: "var(--surface-card)",
+            border: "1px solid var(--surface-border)",
+            padding: "var(--space-xl)",
+            boxShadow: "var(--shadow-card)",
+          }}
+        >
+          <p
+            style={{
+              margin: 0,
+              color: "var(--color-text-secondary)",
+              fontSize: "var(--font-size-sm)",
+            }}
+          >
+            Total Monthly Spend
           </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+          <p
+            style={{
+              margin: "var(--space-sm) 0 0",
+              color: "var(--color-text-primary)",
+              fontSize: "var(--font-size-2xl)",
+              fontWeight: 700,
+              lineHeight: "var(--line-height-tight)",
+            }}
           >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+            $46.99
+          </p>
+          <p
+            style={{
+              margin: "var(--space-sm) 0 0",
+              color: "var(--color-positive)",
+              fontSize: "var(--font-size-sm)",
+              fontWeight: 600,
+            }}
           >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
+            +3.5% from last month
+          </p>
+        </article>
+
+        <article
+          style={{
+            borderRadius: "var(--radius-lg)",
+            backgroundColor: "var(--surface-card)",
+            border: "1px solid var(--surface-border)",
+            padding: "var(--space-xl)",
+            boxShadow: "var(--shadow-card)",
+          }}
+        >
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "space-between",
+              alignItems: "center",
+              marginBottom: "var(--space-lg)",
+            }}
+          >
+            <h2
+              style={{
+                margin: 0,
+                color: "var(--color-text-primary)",
+                fontSize: "var(--font-size-lg)",
+              }}
+            >
+              Active Plans
+            </h2>
+            <Link
+              href="/settings"
+              style={{
+                color: "var(--color-accent)",
+                textDecoration: "none",
+                fontWeight: 600,
+                fontSize: "var(--font-size-sm)",
+              }}
+            >
+              Open settings
+            </Link>
+          </div>
+
+          <ul
+            style={{
+              margin: 0,
+              padding: 0,
+              listStyle: "none",
+              display: "grid",
+              gap: "var(--space-sm)",
+            }}
+          >
+            {plans.map((plan) => (
+              <li
+                key={plan.name}
+                style={{
+                  display: "grid",
+                  gap: "var(--space-xs)",
+                  gridTemplateColumns: "1fr auto auto",
+                  alignItems: "center",
+                  borderRadius: "var(--radius-md)",
+                  backgroundColor: "var(--surface-elevated)",
+                  border: "1px solid var(--surface-border)",
+                  padding: "var(--space-md) var(--space-lg)",
+                }}
+              >
+                <div>
+                  <p
+                    style={{
+                      margin: 0,
+                      color: "var(--color-text-primary)",
+                      fontWeight: 600,
+                    }}
+                  >
+                    {plan.name}
+                  </p>
+                  <p
+                    style={{
+                      margin: "var(--space-xs) 0 0",
+                      color: "var(--color-text-muted)",
+                      fontSize: "var(--font-size-sm)",
+                    }}
+                  >
+                    {plan.cadence}
+                  </p>
+                </div>
+                <p
+                  style={{
+                    margin: 0,
+                    color: "var(--color-text-secondary)",
+                    fontSize: "var(--font-size-sm)",
+                  }}
+                >
+                  {plan.status}
+                </p>
+                <p
+                  style={{
+                    margin: 0,
+                    color: "var(--color-text-primary)",
+                    fontFamily: "var(--font-family-mono)",
+                    fontWeight: 700,
+                  }}
+                >
+                  {plan.amount}
+                </p>
+              </li>
+            ))}
+          </ul>
+        </article>
+      </section>
+    </main>
   );
 }
