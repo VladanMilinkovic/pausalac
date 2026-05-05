@@ -1,6 +1,9 @@
-.next
 node_modules
 coverage
 build
-out
+.expo
+.expo-shared
 package-lock.json
+AGENTS.md
+AI_TICKET_WRITING_GUIDE.md
+docs/AI_TICKET_GUIDE.md
